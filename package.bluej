@@ -2,10 +2,10 @@
 dependency1.from=SalesItemTest
 dependency1.to=SalesItem
 dependency1.type=UsesDependency
-dependency2.from=SalesItem
+dependency2.from=CommentManager
 dependency2.to=Comment
 dependency2.type=UsesDependency
-dependency3.from=CommentManager
+dependency3.from=SalesItem
 dependency3.to=Comment
 dependency3.type=UsesDependency
 editor.fx.0.height=739
