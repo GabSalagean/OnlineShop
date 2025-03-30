@@ -1,4 +1,6 @@
 
+import java.util.HashSet;
+import java.util.Set;
 /**
  * This class represents a comment left for a sales item on an online sales site.
  * A comment consists of a comment text, a rating, and an author name. Other users
@@ -15,6 +17,22 @@ public class Comment
     private String text;
     private int rating;
     private int votes;
+    
+    public class CommentManager {
+    private Set<String> authors; // Store authors to prevent duplicates
+
+    public CommentManager() {
+        this.authors = new HashSet<>();
+    }
+
+    public boolean addComment(Comment comment) {
+        if (authors.contains(comment.getAuthor())) {
+            return false; // Reject duplicate author
+        }
+        authors.add(comment.getAuthor());
+        return true;
+    }
+}
 
     /**
      * Create a comment with all necessary details. The initial vote balance is 0.
@@ -84,4 +102,18 @@ public class Comment
         details += "(Voted as helpful: " + votes + ")\n";
         return details;
     }
+    
+    public class CommentManagerTest {
+    private CommentManager commentManager;
+
+    public void setUp() {
+        commentManager = new CommentManager();
+    }
+
+    public void testAddCommentFailsForDuplicateAuthor() {
+        Comment comment1 = new Comment(":D", "Great product!", 5);
+        Comment comment2 = new Comment("oh", "I changed my mind", 3);
+        
+    }
+}
 }
